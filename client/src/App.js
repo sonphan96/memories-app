@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './components/Home/Home';
 import NavBar from './components/NavBar/NavBar';
-
+import Auth from './components/Auth/Auth';
 
 const App = () => {
 
