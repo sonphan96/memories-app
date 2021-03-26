@@ -38,17 +38,16 @@ const Auth = () => {
   }
 
   const googleSuccess = async (res) => {
-    // const result = res?.profileObj;
-    // const token = res?.tokenId;
+    const result = res?.profileObj;
+    const token = res?.tokenId;
 
-    // try {
-    //   dispatch({ type: AUTH, data: { result, token } });
+    try {
+      dispatch({ type: AUTH, data: { result, token } });
 
-    //   history.push('/');
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    console.log(res)
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
