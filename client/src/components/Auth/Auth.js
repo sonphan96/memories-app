@@ -10,6 +10,8 @@ import { GoogleLogin } from 'react-google-login';
 import Icon from './icon';
 import { AUTH } from '../../constants/actionTypes';
 
+import { signin, signup } from '../../actions/auth';
+
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
@@ -17,6 +19,7 @@ const Auth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState(initialState);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -24,12 +27,18 @@ const Auth = () => {
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    if(isSignup) {
+      dispatch(signup(formData, history))
+    } else {
+      dispatch(signin(formData, history))
+    }
   }
 
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const switchMode = () => {
